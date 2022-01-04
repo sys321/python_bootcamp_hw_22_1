@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Delete docker trash
+        continue-on-error: true
         run: |
           docker container rm -f -v t22_api
           docker container rm -f -v t22_db
