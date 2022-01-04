@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Delete docker trash
+        run: |
+          docker container rm -f -v t22_api
+          docker container rm -f -v t22_db
+          docker network rm t22_network
+          docker image rm t22_api_image
+
+      - name: Show docker state (before)
+        run: |
+          docker image ls
+          docker network ls
+          docker container ls
+
+      - name: Build docker image
+        run: docker-compose -f docker-compose.yml build
+
+      - name: Run docker container
+        run: docker-compose up -d
+
+      - name: Show docker state (after)
+        run: |
+          docker image ls
+          docker network ls
+          docker container ls
+
+      - name: Exec unit-tests
+        run: docker exec -it t22_api python3 tests.py
