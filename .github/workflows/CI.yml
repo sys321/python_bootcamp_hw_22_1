@@ -41,5 +41,5 @@ jobs:
           docker network ls
           docker container ls
 
-      - name: Exec unit-tests
-        run: docker exec --tty t22_api python3 -m unittest -v tests.py
+      - name: Exec py-tests
+        run: docker exec --tty t22_api pytest -v tests_pt.py
