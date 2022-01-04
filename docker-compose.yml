@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  api:
+    container_name: t22_api
+    build:
+      context: .
+      dockerfile: dockerfile
+    image: t22_api_image
+    restart: always
+    ports:
+      - 8000:8000
+    networks:
+      - t22_network
+  db:
+    container_name: t22_db
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=test
+    volumes:
+      - t22_db_volume:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - t22_network
+volumes:
+  t22_db_volume:
+    name: t22_db_volume
+networks:
+  t22_network:
+    name: t22_network

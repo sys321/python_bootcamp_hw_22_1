@@ -11,8 +11,7 @@ from constants import *
 ################################################################################
 
 engine = create_engine(
-    url = SQLALCHEMY_DATABASE_URL,
-    connect_args = {"check_same_thread": False}
+    url = SQLALCHEMY_DATABASE_URL
 )
 
 

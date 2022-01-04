@@ -1,0 +1,10 @@
+__pycache__/
+.vscode/
+t22env/
+.dockerignore
+docker-compose.yml
+dockerfile
+.gitignore
+site.db
+.env
+report.txt

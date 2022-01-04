@@ -1,6 +1,6 @@
-SQLALCHEMY_DATABASE_URL = "sqlite:///site.db"
+SQLALCHEMY_DATABASE_URL = "postgresql://test:test@t22_db:5432/test"
 
-API_URL = "http://localhost:8000"
+API_URL = "http://t22_api:8000"
 
 
 class Error(Exception):
