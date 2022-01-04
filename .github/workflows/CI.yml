@@ -42,4 +42,4 @@ jobs:
           docker container ls
 
       - name: Exec unit-tests
-        run: docker exec --tty t22_api python3 tests.py
+        run: docker exec --tty t22_api python3 -m unittest -v tests.py
