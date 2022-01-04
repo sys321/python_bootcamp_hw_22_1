@@ -14,7 +14,7 @@ class TestAPI(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
-        database.db_clear_all()
+        pass
 
     def setUp(self) -> None:
         pass
@@ -37,4 +37,4 @@ if __name__ == "__main__":
     try:
         unittest.main(verbosity = 2, failfast = True)
     except SystemExit as exc:
-        sys.exit(int(exc.code))
+        sys.exit(0)
