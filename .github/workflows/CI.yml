@@ -35,16 +35,22 @@ jobs:
       - name: Run docker container
         run: docker-compose up -d
 
+      - name: Sleep for 30 seconds
+        continue-on-error: true
+        run: sleep 30s
+        shell: bash
+
       - name: Show docker state (after)
         run: |
           docker image ls
           docker network ls
           docker container ls
+          docker network inspect t22_network
 
       - name: Exec unit-tests
         continue-on-error: true
-        run: docker exec --tty t22_api python -m unittest -v tests.py
+        run: docker exec --tty t22_api python -m unittest -v -f tests.py
 
       - name: Exec py-tests
         continue-on-error: true
-        run: docker exec --tty t22_api pytest -v tests_pt.py
+        run: docker exec --tty t22_api pytest -v -x tests_pt.py

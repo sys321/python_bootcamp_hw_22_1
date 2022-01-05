@@ -445,4 +445,4 @@ def test_09_item_get():
 
 
 if __name__ == "__main__":
-    sys.exit(pytest.main(["-v", "tests_pt.py"]))
+    sys.exit(pytest.main(["-v", "-x", "tests_pt.py"]))
