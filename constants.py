@@ -1,6 +1,14 @@
-SQLALCHEMY_DATABASE_URL = "postgresql://test:test@t22_db:5432/test"
+import os
 
-API_URL = "http://t22_api:8000"
+POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+POSTGRES_USER = os.getenv("POSTGRES_USER")
+POSTGRES_HOST = os.getenv("POSTGRES_HOST")
+POSTGRES_PORT = os.getenv("POSTGRES_PORT")
+POSTGRES_DB = os.getenv("POSTGRES_DB")
+SQLALCHEMY_DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+API_HOST = os.getenv("API_HOST")
+API_PORT = os.getenv("API_PORT")
+API_URL = f"http://{API_HOST}:{API_PORT}"
 
 
 class Error(Exception):

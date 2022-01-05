@@ -7,6 +7,14 @@ services:
       dockerfile: dockerfile
     image: t22_api_image
     restart: always
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_HOST=t22_db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=test
+      - API_HOST=t22_api
+      - API_PORT=8000
     ports:
       - 8000:8000
     networks:
