@@ -41,5 +41,10 @@ jobs:
           docker network ls
           docker container ls
 
+      - name: Exec unit-tests
+        continue-on-error: true
+        run: docker exec --tty t22_api python -m unittest -v tests.py
+
       - name: Exec py-tests
+        continue-on-error: true
         run: docker exec --tty t22_api pytest -v tests_pt.py
