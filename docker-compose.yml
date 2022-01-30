@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   api:
     container_name: t22_api
@@ -19,6 +20,7 @@ services:
       - 8000:8000
     networks:
       - t22_network
+
   db:
     container_name: t22_db
     image: postgres
@@ -33,9 +35,11 @@ services:
       - 5432:5432
     networks:
       - t22_network
+
 volumes:
   t22_db_volume:
     name: t22_db_volume
+
 networks:
   t22_network:
     name: t22_network

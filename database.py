@@ -43,7 +43,7 @@ class DBUser(DBModelExt):
 
     id = Column(Integer, nullable = False, primary_key = True, autoincrement = True, index = True)
     login = Column(String, nullable = False, unique = True, index = True)
-    password = Column(String, nullable = False,)
+    password = Column(String, nullable = False)
     items = relationship("DBItem", back_populates = "owner", passive_deletes = True)
 
     def __init__(self, login: str, password: str) -> None:
@@ -402,7 +402,7 @@ def db_delete_item(id: int) -> None:
 
 
 def db_rebase_item(id: int, new_owner_id: int) -> DBItem:
-    """Перепривязать обеъкт от одного владельца к другому.
+    """Перепривязать объект от одного владельца к другому.
 
     Args:
         id (int): Идентификатор - этот объект будет перепривязан.

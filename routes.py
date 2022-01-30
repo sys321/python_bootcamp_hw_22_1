@@ -16,14 +16,14 @@ async def hello():
     return {"data": "None"}
 
 
-def _user_create(login: str, password) -> dict:
+def _user_create(login: str, password: str) -> dict:
     """Создать нового пользователя.
 
     Вынесено в отдельный метод, чтобы вызывать для разных маршрутов.
 
     Args:
         login (str): Логин.
-        password ([type]): Пароль.
+        password (str): Пароль.
 
     Returns:
         dict: {"status_code": число, "status_message" : текст[, "data": словарь]}.
@@ -246,7 +246,7 @@ async def item_send(id: int = Body(...), new_owner_login: str = Body(...), token
     """Маршрут - послать свой объект другому пользователю. POST-запрос (/send).
 
     Args:
-        id (int,): Идентификатор - этот объект будет послан.
+        id (int): Идентификатор - этот объект будет послан.
         new_owner_login (str): Логин - этот пользователь станет новым владельцем.
         token (str): Токен текущего пользователя.
 
